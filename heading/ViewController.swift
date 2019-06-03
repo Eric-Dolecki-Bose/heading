@@ -13,10 +13,17 @@ import Foundation
 class ViewController: UIViewController {
 
     var zone: UIView!
+    var zone2: UIView!
+    var zones:[UIView] = [UIView]()
+    
     var person: UIView!
     var outerCircle: CAShapeLayer!
     var innerCircle: CAShapeLayer!
     var tinyCircle: CAShapeLayer!
+    
+    var outerCircle2: CAShapeLayer!
+    var innerCircle2: CAShapeLayer!
+    var tinyCircle2: CAShapeLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +90,81 @@ class ViewController: UIViewController {
         zone.layer.addSublayer(tinyCircle)
         zone.layer.addSublayer(tc)
 
+        
+        // =====
+        
+        zone2 = UIView(frame: CGRect(x: 260, y: 200, width: 0, height: 0))
+        
+        // Create shape layers for the zone.
+        
+        tinyCircle2 = CAShapeLayer()
+        tinyCircle2.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        tinyCircle2.position = CGPoint(x: zone.layer.bounds.midX, y: zone.layer.bounds.midY)
+        tinyCircle2.path = UIBezierPath(ovalIn: CGRect(x: -10.0 / 2, y: -10.0 / 2, width: 10.0, height: 10.0)).cgPath
+        tinyCircle2.fillColor = UIColor.purple.withAlphaComponent(0.2).cgColor
+        tinyCircle2.strokeColor = UIColor.white.cgColor
+        
+        let tc2 = CAShapeLayer()
+        tc2.path = UIBezierPath(arcCenter: CGPoint(x: 0, y: 0),
+                               radius: CGFloat(1),
+                               startAngle: CGFloat(0),
+                               endAngle:CGFloat(Double.pi * 2),
+                               clockwise: true).cgPath
+        tc2.fillColor = UIColor.black.cgColor
+        
+        // 50px inner radius.
+        innerCircle2 = CAShapeLayer()
+        innerCircle2.path = UIBezierPath(arcCenter: CGPoint(x: 0, y: 0),
+                                        radius: CGFloat(50),
+                                        startAngle: CGFloat(0),
+                                        endAngle:CGFloat(Double.pi * 2),
+                                        clockwise: true).cgPath
+        innerCircle2.fillColor = UIColor.clear.cgColor
+        innerCircle2.strokeColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        innerCircle2.lineWidth = 1.0
+        innerCircle2.lineDashPattern = [2,4]
+        
+        // 100px outer radius.
+        outerCircle2 = CAShapeLayer()
+        outerCircle2.path = UIBezierPath(arcCenter: CGPoint(x: 0, y: 0),
+                                        radius: CGFloat(100),
+                                        startAngle: CGFloat(0),
+                                        endAngle:CGFloat(Double.pi * 2),
+                                        clockwise: true).cgPath
+        outerCircle2.fillColor = UIColor.clear.cgColor
+        outerCircle2.strokeColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        outerCircle2.lineWidth = 1.0
+        outerCircle2.lineDashPattern = [2,4]
+        
+        let rotation2 = CABasicAnimation(keyPath: "transform.rotation")
+        rotation2.byValue = NSNumber(value: 2 * Double.pi)
+        rotation2.duration = 48
+        rotation2.repeatCount = Float.infinity
+        innerCircle2.add(rotation2, forKey: "lineRotation2")
+        outerCircle2.add(rotation2, forKey: "lineRotation2")
+        
+        zone2.layer.addSublayer(outerCircle2)
+        zone2.layer.addSublayer(innerCircle2)
+        zone2.layer.addSublayer(tinyCircle2)
+        zone2.layer.addSublayer(tc2)
+        
+        
+        
+        
+        
+        
+        
+        zones.append(zone)
+        zones.append(zone2)
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // Create the "person" dot.
         // View need a height and width of zero to rotate properly.
         
@@ -122,6 +204,7 @@ class ViewController: UIViewController {
         // Now created, add them to the VC view.
         
         self.view.addSubview(zone)
+        self.view.addSubview(zone2)
         self.view.addSubview(person)
     }
 
