@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var zone: UIView!
     var zone2: UIView!
     var zones:[UIView] = [UIView]()
+    var zoneTargets:[ZoneTarget] = [ZoneTarget]()
     
     var person: UIView!
     var outerCircle: CAShapeLayer!
@@ -227,6 +228,8 @@ class ViewController: UIViewController {
         let testZone = ZoneTarget(frame: CGRect(x: 20, y: 20, width: 0, height: 0), title: "ZONE C")
         testZone.center = CGPoint(x: 20, y: 20)
         self.view.addSubview(testZone)
+        // Store for looping later.
+        zoneTargets.append(testZone)
         */
     }
 
