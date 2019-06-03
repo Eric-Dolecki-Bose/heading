@@ -33,6 +33,9 @@ class ViewController: UIViewController {
     
     func generateUI()
     {
+        // Zones should become Class objects since we're using more than one of them.
+        // Would keep this code tidier and avoid repeated code blocks.
+        
         // View need a height and width of zero for things to align properly.
         
         zone = UIView(frame: CGRect(x: 100, y: 200, width: 0, height: 0))
@@ -219,6 +222,12 @@ class ViewController: UIViewController {
         self.view.addSubview(zone)
         self.view.addSubview(zone2)
         self.view.addSubview(person)
+        
+        /*
+        let testZone = ZoneTarget(frame: CGRect(x: 20, y: 20, width: 0, height: 0), title: "ZONE C")
+        testZone.center = CGPoint(x: 20, y: 20)
+        self.view.addSubview(testZone)
+        */
     }
 
     func evaluateLook()
