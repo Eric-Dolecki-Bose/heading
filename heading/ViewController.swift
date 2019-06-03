@@ -90,6 +90,13 @@ class ViewController: UIViewController {
         zone.layer.addSublayer(tinyCircle)
         zone.layer.addSublayer(tc)
 
+        let label1 = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 15))
+        label1.textColor = UIColor.white.withAlphaComponent(0.5)
+        label1.font = UIFont.systemFont(ofSize: 9.0)
+        label1.text = "ZONE A"
+        label1.textAlignment = .center
+        label1.center = CGPoint(x: 0, y: 25)
+        zone.addSubview(label1)
         
         // =====
         
@@ -148,7 +155,13 @@ class ViewController: UIViewController {
         zone2.layer.addSublayer(tinyCircle2)
         zone2.layer.addSublayer(tc2)
         
-        
+        let label2 = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 15))
+        label2.textColor = UIColor.white.withAlphaComponent(0.5)
+        label2.font = UIFont.systemFont(ofSize: 9.0)
+        label2.text = "ZONE B"
+        label2.textAlignment = .center
+        label2.center = CGPoint(x: 0, y: 25)
+        zone2.addSubview(label2)
         
         
         
